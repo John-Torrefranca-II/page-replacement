@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tests</title>
+  <style>
+    body { font-family: monospace; padding: 16px; }
+    .pass { color: #15803d; }
+    .fail { color: #b91c1c; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Test results</h1>
+  <pre id="out"></pre>
+
+  <script>
+    // show console.log output on the page
+    const out = document.getElementById("out");
+    const realLog = console.log;
+    console.log = (msg) => {
+      realLog(msg);
+      const line = document.createElement("div");
+      line.className = String(msg).startsWith("PASS") ? "pass" : "fail";
+      line.textContent = msg;
+      out.appendChild(line);
+    };
+  </script>
+  <script src="algorithms.js"></script>
+  <script src="tests.js"></script>
+</body>
+</html>

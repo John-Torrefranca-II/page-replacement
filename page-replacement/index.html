@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page Replacement Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Page Replacement Simulator</h1>
+    <p>Compare FIFO, LRU and Optimal on any reference string.</p>
+  </header>
+
+  <main>
+    <form id="sim-form" novalidate>
+      <label for="refs">Reference string (numbers separated by commas or spaces)</label>
+      <input id="refs" type="text" value="7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1" />
+
+      <label for="frames">Number of frames</label>
+      <input id="frames" type="text" value="3" />
+
+      <div class="buttons">
+        <button type="submit">Run simulation</button>
+        <button type="button" id="random-btn">Random string</button>
+      </div>
+    </form>
+
+    <div id="error" role="alert"></div>
+    <section id="summary"></section>
+    <section id="results"></section>
+  </main>
+
+  <script src="algorithms.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
