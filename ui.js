@@ -19,6 +19,7 @@ function run() {
 
   const results = ALGOS.map((a) => simulate(parsed.refs, parsed.nFrames, a));
   renderSummary(results);
+  renderHitMiss(parsed.refs, results);
   renderResults(parsed.refs, results);
 }
 
@@ -54,13 +55,24 @@ function renderSummary(results) {
   h.textContent = "Comparison";
   box.appendChild(h);
 
+  const table = document.createElement("table");
+  const head = table.insertRow();
+  ["Algorithm", "References", "Hits", "Faults (misses)", "Hit ratio", "Fault ratio"]
+    .forEach((t) => addCell(head, t, "label"));
+
   results.forEach((r) => {
-    const p = document.createElement("p");
-    const isBest = r.faults === best;
-    p.className = "summary-row" + (isBest ? " best" : "");
-    p.textContent = `${r.algo}: ${r.faults} faults, ${r.hits} hits` + (isBest ? "  ← fewest faults" : "");
-    box.appendChild(p);
+    const total = r.hits + r.faults;
+    const cls = r.faults === best ? "best" : "";
+    const row = table.insertRow();
+    addCell(row, r.algo + (cls ? " (fewest faults)" : ""), cls);
+    addCell(row, total, cls);
+    addCell(row, r.hits, cls);
+    addCell(row, r.faults, cls);
+    addCell(row, `${(r.hits / total).toFixed(2)} (${((r.hits / total) * 100).toFixed(1)}%)`, cls);
+    addCell(row, `${(r.faults / total).toFixed(2)} (${((r.faults / total) * 100).toFixed(1)}%)`, cls);
   });
+
+  box.appendChild(table);
 }
 
 function renderResults(refs, results) {
@@ -97,7 +109,7 @@ function buildTable(refs, result) {
 
   // last row: F = fault, H = hit (text, so it still reads without color)
   const last = table.insertRow();
-  addCell(last, "Result", "label");
+  addCell(last, "Hit / Miss", "label");
   result.steps.forEach((s) => addCell(last, s.fault ? "F" : "H", s.fault ? "fault" : "hit"));
 
   wrap.appendChild(table);
@@ -116,4 +128,35 @@ function randomString() {
   const arr = Array.from({ length: len }, () => Math.floor(Math.random() * 8));
   document.getElementById("refs").value = arr.join(",");
   run();
+}
+
+function renderHitMiss(refs, results) {
+  const box = document.getElementById("hitmiss");
+  box.innerHTML = "";
+
+  const wrap = document.createElement("div");
+  wrap.className = "table-wrap";
+
+  const h = document.createElement("h2");
+  h.textContent = "Hit / Miss table";
+  wrap.appendChild(h);
+
+  const table = document.createElement("table");
+
+  const stepRow = table.insertRow();
+  addCell(stepRow, "Step", "label");
+  refs.forEach((_, i) => addCell(stepRow, i + 1, ""));
+
+  const pageRow = table.insertRow();
+  addCell(pageRow, "Page", "label");
+  refs.forEach((p) => addCell(pageRow, p, ""));
+
+  results.forEach((r) => {
+    const row = table.insertRow();
+    addCell(row, r.algo, "label");
+    r.steps.forEach((s) => addCell(row, s.fault ? "Miss" : "Hit", s.fault ? "fault" : "hit"));
+  });
+
+  wrap.appendChild(table);
+  box.appendChild(wrap);
 }

@@ -36,3 +36,10 @@ cases.forEach((c) => {
     console.log(`${ok ? "PASS" : "FAIL"}  ${c.id}  ${algo}: expected ${c.expected[algo]}, got ${actual}`);
   }
 });
+
+const tb = [7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1];
+const lru = simulate(tb, 3, "LRU");
+const ratiosOk =
+  lru.hits === 8 && lru.faults === 12 &&
+  lru.hits / 20 === 0.4 && lru.faults / 20 === 0.6;
+console.log(`${ratiosOk ? "PASS" : "FAIL"}  TC-ratio LRU: hit 0.40, fault 0.60`);

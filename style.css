@@ -80,3 +80,6 @@ td {
 td.label { background: #e5e7eb; font-weight: 700; padding: 0 8px; text-align: left; white-space: nowrap; }
 td.fault { background: #fecaca; }
 td.hit   { background: #bbf7d0; }
+
+#summary table { margin-top: 8px; }
+td.best { background: #bbf7d0; font-weight: 700; }
