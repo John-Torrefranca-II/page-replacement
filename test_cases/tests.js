@@ -1,5 +1,5 @@
 if (typeof require !== "undefined") {
-  var { simulate } = require("./algorithms.js");
+  var { simulate } = require("../algorithms.js");
 }
 
 const cases = [
