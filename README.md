@@ -26,10 +26,11 @@ OPT needs to know future requests, so a real OS cannot use it. It is included as
 ## Group Members
 
 | Member | Role | Main contribution |
-| [Torrefranca, John Merlo II] | e.g., Algorithm lead, algorithm.js Test.js, Documentation |
-| [Guevarra, John Melvin] | html, ui.js, style.css |
-| [Tanggote, Alyzza] | Testing and documentation |
-| [Añete, Nicole Angela] | Testing and documentation |
+|---|---|---|
+| Torrefranca, John Merlo II | Algorithm lead | algorithms.js, tests.js, documentation |
+| Guevarra, John Melvin | Interface developer | index.html, main.js, |
+| Tanggote, Alyzza | Testing and documentation | index.html, style.css |
+| Añete, Nicole Angela | Testing and documentation | index.html, style.css |
 
 ## Programming Language and Version
 
@@ -37,8 +38,8 @@ OPT needs to know future requests, so a real OS cannot use it. It is included as
 |---|---|
 | Language | JavaScript (ES6 or later) |
 | Markup and styling | HTML5 and CSS3 |
-| Editor | Visual Studio Code [version] |
-| Browser tested | [browser name and version] |
+| Editor | Visual Studio Code |
+| Browser tested | Brave |
 
 No frameworks or external libraries are used.
 
@@ -52,7 +53,7 @@ No frameworks or external libraries are used.
 **Optional tools**
 
 - Visual Studio Code with the Live Server extension, for editing with auto-reload
-- Node.js (LTS), only to run `tests.js` in the terminal with `node tests.js`
+- Node.js (LTS), only to run the tests in the terminal with `node test_cases/tests.js`
 - Git, to clone the repository
 
 **Setup**
@@ -61,7 +62,7 @@ No frameworks or external libraries are used.
 ```
    git clone https://github.com/John-Torrefranca-II/page-replacement.git
 ```
-2. Keep all files in the same folder, because `index.html` loads `style.css`, `algorithms.js` and `ui.js`.
+2. Keep all files in the same folder structure, because `index.html` loads `style.css`, `algorithms.js` and `main.js`.
 
 No installation, server or internet connection is needed to run the program.
 
@@ -73,7 +74,7 @@ No installation, server or internet connection is needed to run the program.
 
 **Option 3: VS Code.** Open the project folder in VS Code, right-click `index.html`, and choose Open with Live Server.
 
-**To run the tests,** open `test.html` the same way. Every line should show PASS.
+**To run the tests,** open `test_cases/test.html` the same way. Every line should show PASS. 
 
 ## How to Use the Program
 
@@ -113,8 +114,6 @@ When an error is shown, the simulation does not run.
 Reference string: 7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1
 Number of frames: 3
 ```
-
-## Sample Output
 
 ## Sample Output
 
@@ -184,30 +183,34 @@ The algorithms only differ in how the victim is chosen in step 3.
 ## Project Structure
 
 ```
-page-replacement/
-├── index.html      Page layout and input form
-├── style.css       Styling
-├── algorithms.js   FIFO, LRU and OPT logic (no page code)
-├── ui.js           Input validation and table drawing
-├── tests.js        Test cases checked against hand-solved answers
-├── test.html       Runs tests.js in the browser
-└── README.md
+project/
+├── index.html          Page layout and input form
+├── main.js             Input validation and table drawing
+├── algorithms.js       FIFO, LRU and OPT logic (no page code)
+├── style.css           Styling
+├── README.md
+├── test_cases/
+│   ├── test_cases.txt  Test cases and results
+│   ├── tests.js        Automated tests against hand-solved answers
+│   └── test.html       Runs tests.js in the browser
+└── documentation/
+    └── final_documentation.pdf
 ```
 
 ## Testing
 
-Test results are recorded in the documentation. Summary of the main cases:
+Full test cases and results are in `test_cases/test_cases.txt` and in the final documentation (sections 9 and 10). Summary of the main cases:
 
 | ID | Input | Expected | Actual | Result |
 |---|---|---|---|---|
-| TC-01 | Textbook string, 3 frames | FIFO 15, LRU 12, OPT 9 | [fill in] | [Pass/Fail] |
-| TC-02 | `1,2,3,4,1,2,5,1,2,3,4,5`, 3 frames | FIFO 9 | [fill in] | [Pass/Fail] |
-| TC-03 | Same string, 4 frames | FIFO 10 | [fill in] | [Pass/Fail] |
-| TC-04 | `1,1,2,2,1`, 1 frame | 3 faults for all three | [fill in] | [Pass/Fail] |
-| TC-05 | Empty reference string | Error message, no crash | [fill in] | [Pass/Fail] |
-| TC-06 | `a,b,c` | Error message | [fill in] | [Pass/Fail] |
-| TC-07 | Frames = 0 | Error message | [fill in] | [Pass/Fail] |
-| TC-08 | Textbook string, 3 frames, LRU ratios | Hit ratio 0.40, fault ratio 0.60 | [fill in] | [Pass/Fail] |
+| TC-01 | Textbook string, 3 frames | FIFO 15, LRU 12, OPT 9 | FIFO 15, LRU 12, OPT 9 | PASS |
+| TC-02 | `1,2,3,4,1,2,5,1,2,3,4,5`, 3 frames | FIFO 9 | FIFO 9, LRU 10, OPT 7 | PASS |
+| TC-03 | Same string, 4 frames | FIFO 10 | FIFO 10, LRU 8, OPT 6 | PASS |
+| TC-04 | `1,1,2,2,1`, 1 frame | 3 faults for all three | 3 faults for all three | PASS |
+| TC-05 | Empty reference string | Error message, no crash | Enter a reference string. | PASS |
+| TC-06 | `a,b,c` | Error message | Reference string must contain whole numbers (0 or more) only. | PASS |
+| TC-07 | Frames = 0 | Error message | Number of frames must be a whole number. | PASS |
+| TC-08 | Textbook string, 3 frames, LRU ratios | Hit ratio 0.40, fault ratio 0.60 | Hit ratio 0.40, fault ratio 0.60  | PASS |
 
 ## Limitations
 
