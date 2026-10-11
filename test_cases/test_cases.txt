@@ -1,0 +1,59 @@
+PAGE REPLACEMENT SIMULATOR - TEST CASES AND RESULTS
+Topic code: B2 (FIFO vs LRU vs Optimal)
+Live site: https://john-torrefranca-ii.github.io/page-replacement/
+Date tested: October 11, 2026
+Browser: Brave 
+
+NOTES
+- TC-01 to TC-04 and TC-08 are automated. They run when test_cases/test.html is opened.
+- TC-05 to TC-07 are manual. Type the input on the main page and read the message shown.
+- Textbook string: 7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1
+- Belady string: 1,2,3,4,1,2,5,1,2,3,4,5
+
+TC-01 (automated)
+Input: Textbook string, 3 frames
+Expected: FIFO 15 faults, LRU 12 faults, OPT 9 faults (standard textbook result)
+Actual: FIFO 15 faults, LRU 12 faults, OPT 9 faults
+Result: PASS
+
+TC-02 (automated)
+Input: Belady string, 3 frames
+Expected: FIFO 9 faults, LRU 10 faults, OPT 7 faults
+Actual: FIFO 9 faults, LRU 10 faults, OPT 7 faults
+Result: PASS
+
+TC-03 (automated)
+Input: Belady string, 4 frames
+Expected: FIFO 10 faults, LRU 8 faults, OPT 6 faults (FIFO gets worse with more frames: Belady's anomaly)
+Actual: FIFO 10 faults, LRU 8 faults, OPT 6 faults
+Result: PASS
+
+TC-04 (automated)
+Input: 1,1,2,2,1 with 1 frame
+Expected: 3 faults for FIFO, LRU and OPT (hand solved)
+Actual: 3 faults for FIFO, LRU and OPT
+Result: PASS
+
+TC-05 (manual)
+Input: Empty reference string, 3 frames
+Expected: Enter a reference string.
+Actual: Enter a reference string.
+Result: PASS
+
+TC-06 (manual)
+Input: a,b,c with 3 frames
+Expected: Reference string must contain whole numbers (0 or more) only.
+Actual: Reference string must contain whole numbers (0 or more) only.
+Result: PASS
+
+TC-07 (manual)
+Input: 7,0,1 with frames = 0
+Expected: Frames must be between 1 and 10.
+Actual: Frames must be between 1 and 10.
+Result: PASS
+
+TC-08 (automated)
+Input: Textbook string, 3 frames, LRU ratios
+Expected: Hit ratio 0.40 (8 / 20), fault ratio 0.60 (12 / 20)
+Actual: Hit ratio 0.40, fault ratio 0.60
+Result: PASS
