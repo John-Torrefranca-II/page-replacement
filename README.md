@@ -41,7 +41,7 @@ OPT needs to know future requests, so a real OS cannot use it. It is included as
 | Markup and styling | HTML5 and CSS3 |
 | Editor | Visual Studio Code |
 | Browser tested | Brave |
-git add .; git commit -m "Update README, rename TC-08, fill test cases, fix main.js comment"; git push
+
 No frameworks or external libraries are used.
 
 ## Requirements and Setup
