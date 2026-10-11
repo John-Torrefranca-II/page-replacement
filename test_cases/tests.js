@@ -13,13 +13,13 @@ const cases = [
     id: "TC-02 Belady, 3 frames",
     refs: [1,2,3,4,1,2,5,1,2,3,4,5],
     frames: 3,
-    expected: { FIFO: 9 },
+    expected: { FIFO: 9, LRU: 10, OPT: 7 },
   },
   {
     id: "TC-03 Belady, 4 frames",
     refs: [1,2,3,4,1,2,5,1,2,3,4,5],
     frames: 4,
-    expected: { FIFO: 10 },
+    expected: { FIFO: 10, LRU: 8, OPT: 6 },
   },
   {
     id: "TC-04 one frame (every change is a fault)",
