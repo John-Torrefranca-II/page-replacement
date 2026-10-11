@@ -1,12 +1,12 @@
 # Page Replacement Simulator
 
-**Topic code:** B2
-**Topic:** Page Replacement Simulator: FIFO vs LRU vs Optimal
-**Course:** BSIT, National Teachers College
-**Section:** 2.11
-**Instructor:** Sir Joemel Atiga
-**Live demo:** https://john-torrefranca-ii.github.io/page-replacement/
-**Repository:** https://github.com/John-Torrefranca-II/page-replacement
+- **Topic code:** B2
+- **Topic:** Page Replacement Simulator: FIFO vs LRU vs Optimal
+- **Course:** BSIT, National Teachers College
+- **Section:** 2.11
+- **Instructor:** Sir Joemel Atiga
+- **Live demo:** https://john-torrefranca-ii.github.io/page-replacement/
+- **Repository:** https://github.com/John-Torrefranca-II/page-replacement
 
 ## OS Concept
 
@@ -39,7 +39,7 @@ OPT needs to know future requests, so a real OS cannot use it. It is included as
 |---|---|
 | Language | JavaScript (ES6 or later) |
 | Markup and styling | HTML5 and CSS3 |
-| Editor | Visual Studio Code 2022 |
+| Editor | Visual Studio Code |
 | Browser tested | Brave |
 
 No frameworks or external libraries are used.
