@@ -1,4 +1,4 @@
-// ui.js
+// main.js
 const ALGOS = ["FIFO", "LRU", "OPT"];
 const MAX_REFS = 40;
 const MAX_FRAMES = 10;

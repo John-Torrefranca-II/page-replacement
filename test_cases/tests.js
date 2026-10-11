@@ -42,4 +42,4 @@ const lru = simulate(tb, 3, "LRU");
 const ratiosOk =
   lru.hits === 8 && lru.faults === 12 &&
   lru.hits / 20 === 0.4 && lru.faults / 20 === 0.6;
-console.log(`${ratiosOk ? "PASS" : "FAIL"}  TC-ratio LRU: hit 0.40, fault 0.60`);
+console.log(`${ratiosOk ? "PASS" : "FAIL"}  TC-08 LRU ratios: hit 0.40, fault 0.60`);

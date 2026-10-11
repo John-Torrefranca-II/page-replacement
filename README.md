@@ -1,8 +1,9 @@
 # Page Replacement Simulator
 
-**Topic code and Topic:** B2 - Page Replacement Algorithms (FIFO, LRU, Optimal)
-**Course:** BSIT , National Teachers College
-**Section:** 2.11 
+**Topic code:** B2
+**Topic:** Page Replacement Simulator: FIFO vs LRU vs Optimal
+**Course:** BSIT, National Teachers College
+**Section:** 2.11
 **Instructor:** Sir Joemel Atiga
 **Live demo:** https://john-torrefranca-ii.github.io/page-replacement/
 **Repository:** https://github.com/John-Torrefranca-II/page-replacement
@@ -28,7 +29,7 @@ OPT needs to know future requests, so a real OS cannot use it. It is included as
 | Member | Role | Main contribution |
 |---|---|---|
 | Torrefranca, John Merlo II | Algorithm lead | algorithms.js, tests.js, documentation |
-| Guevarra, John Melvin | Interface developer | index.html, main.js, |
+| Guevarra, John Melvin | Interface developer | index.html, main.js |
 | Tanggote, Alyzza | Testing and documentation | index.html, style.css |
 | Añete, Nicole Angela | Testing and documentation | index.html, style.css |
 
@@ -38,7 +39,7 @@ OPT needs to know future requests, so a real OS cannot use it. It is included as
 |---|---|
 | Language | JavaScript (ES6 or later) |
 | Markup and styling | HTML5 and CSS3 |
-| Editor | Visual Studio Code |
+| Editor | Visual Studio Code 2022 |
 | Browser tested | Brave |
 
 No frameworks or external libraries are used.
@@ -74,7 +75,7 @@ No installation, server or internet connection is needed to run the program.
 
 **Option 3: VS Code.** Open the project folder in VS Code, right-click `index.html`, and choose Open with Live Server.
 
-**To run the tests,** open `test_cases/test.html` the same way. Every line should show PASS. 
+**To run the tests,** open `test_cases/test.html` the same way. Every line should show PASS.
 
 ## How to Use the Program
 
@@ -82,12 +83,12 @@ No installation, server or internet connection is needed to run the program.
 2. Type the **number of frames** in the second box.
 3. Click **Run simulation**. The Random string button fills the first box with a random string and runs it immediately.
 4. Read the **Comparison** table at the top. For each algorithm it shows the number of references, hits, faults (misses), hit ratio and fault ratio, and it marks the algorithm with the fewest faults.
-5. Below it, the **Hit / Miss table** lists Hit or Miss for every step, for all three algorithms side by side.
+5. Below it, the **Hit / Miss table** lists Hit or Miss for every step, for all three algorithms side by side. Miss cells are shaded red and Hit cells are shaded green.
 6. Scroll down to see one frame table for each algorithm:
    - The top row is the reference string.
    - Each Frame row shows what is in that frame after every step.
-   - The Result row shows **F** for a page fault and **H** for a hit.
-   - On a page fault, the whole column is shaded red. In the Result row, H cells are shaded green.
+   - The Hit / Miss row at the bottom shows **F** for a page fault and **H** for a hit.
+   - On a page fault, the whole column is shaded red. In the Hit / Miss row, H cells are shaded green.
 
 **Input rules**
 
@@ -140,21 +141,14 @@ OPT    Miss Miss Miss Miss Hit  Miss Hit  Miss
 **FIFO frame table** (blank means the frame is empty)
 
 ```
-Page     7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1
-Frame 1  7 7 7 2 2 2 2 4 4 4 0 0 0 0 0 0 0 7 7 7
-Frame 2    0 0 0 0 3 3 3 2 2 2 2 2 1 1 1 1 1 0 0
-Frame 3      1 1 1 1 0 0 0 3 3 3 3 3 2 2 2 2 2 1
-Result   F F F F H F F F F F F H H F F H H F F F
+Page         7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1
+Frame 1      7 7 7 2 2 2 2 4 4 4 0 0 0 0 0 0 0 7 7 7
+Frame 2        0 0 0 0 3 3 3 2 2 2 2 2 1 1 1 1 1 0 0
+Frame 3          1 1 1 1 0 0 0 3 3 3 3 3 2 2 2 2 2 1
+Hit / Miss   F F F F H F F F F F F H H F F H H F F F
 ```
 
 The LRU and OPT frame tables appear below it on the page in the same format.
-
-**Invalid input example**
-
-```
-Reference string: 7,a,1
-Result: Reference string must contain whole numbers (0 or more) only.
-```
 
 **Invalid input example**
 
@@ -204,13 +198,13 @@ Full test cases and results are in `test_cases/test_cases.txt` and in the final 
 | ID | Input | Expected | Actual | Result |
 |---|---|---|---|---|
 | TC-01 | Textbook string, 3 frames | FIFO 15, LRU 12, OPT 9 | FIFO 15, LRU 12, OPT 9 | PASS |
-| TC-02 | `1,2,3,4,1,2,5,1,2,3,4,5`, 3 frames | FIFO 9 | FIFO 9, LRU 10, OPT 7 | PASS |
-| TC-03 | Same string, 4 frames | FIFO 10 | FIFO 10, LRU 8, OPT 6 | PASS |
+| TC-02 | `1,2,3,4,1,2,5,1,2,3,4,5`, 3 frames | FIFO 9, LRU 10, OPT 7 | FIFO 9, LRU 10, OPT 7 | PASS |
+| TC-03 | Same string, 4 frames | FIFO 10, LRU 8, OPT 6 | FIFO 10, LRU 8, OPT 6 | PASS |
 | TC-04 | `1,1,2,2,1`, 1 frame | 3 faults for all three | 3 faults for all three | PASS |
-| TC-05 | Empty reference string | Error message, no crash | Enter a reference string. | PASS |
-| TC-06 | `a,b,c` | Error message | Reference string must contain whole numbers (0 or more) only. | PASS |
-| TC-07 | Frames = 0 | Error message | Number of frames must be a whole number. | PASS |
-| TC-08 | Textbook string, 3 frames, LRU ratios | Hit ratio 0.40, fault ratio 0.60 | Hit ratio 0.40, fault ratio 0.60  | PASS |
+| TC-05 | Empty reference string | Enter a reference string. | Enter a reference string. | PASS |
+| TC-06 | `a,b,c` | Reference string must contain whole numbers (0 or more) only. | Reference string must contain whole numbers (0 or more) only. | PASS |
+| TC-07 | Frames = 0 | Frames must be between 1 and 10. | Frames must be between 1 and 10. | PASS |
+| TC-08 | Textbook string, 3 frames, LRU ratios | Hit ratio 0.40, fault ratio 0.60 | Hit ratio 0.40, fault ratio 0.60 | PASS |
 
 ## Limitations
 
